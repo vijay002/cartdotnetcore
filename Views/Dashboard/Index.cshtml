@@ -1,0 +1,51 @@
+﻿@model List<ItemModelView>
+<div class="container">
+    <div class="row">
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <div class="col-3">
+                    <div class="card p-1 m-2" style="width:12rem;">
+                        <img src="@item.ImagePath" class="img-fluid rounded-2" />
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            <p class="card-text">@item.Description</p>
+                            <h6 class="card-footer">@item.Quantity</h6>
+                            <a class="btn btn-sm btn-primary" asp-action="AddtoCart" asp-controller="AddtoCart" asp-route-id="@item.Id">
+                                Buy
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                @* <div class="col-3">
+                    <div class="card" style="width: 12rem;">
+                        <div class="card-body">
+                            <img src="@item.ImagePath" title="" class="img-fluid" />
+                        </div>
+                        <div class="card-footer">
+                            <p class="form-label">@item.Name</p> |
+                            <p class="form-label">stock: @item.Quantity</p> |
+                            <p class="form-label">@item.Category</p>
+                        </div>
+                        <a asp-action="AddtoCart" asp-controller="AddtoCart" asp-route-id="@item.Id"
+                           class="btn btn-primary form-control">Add To</a>
+                    </div>
+                </div> *@
+            }
+        }
+
+        @* <div class="card" style="width:12rem">
+            <img  src="~/images/43af90d5-d4a3-4324-b384-d0c031479458.jpg"/> 
+            <div class="card-body">
+                <h5 class="card-title"> iTemanem</h5>
+                <p class="card-text">therere description for </p>
+                <h6 class="card-text">10</h6>
+                <a class="btn btn-sm btn-primary">Buy   </a>
+            </div>
+
+
+        </div> *@
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿@model ItemCreateModelView
+
+<div class="container">
+
+    <form asp-action="createitem" asp-controller="item" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
+        <div class="col-6">
+            <input type="file" asp-for="UploadedFile" class="form-control" onchange="hiddenfiledchange()" />
+            <span asp-validation-for="UploadedFile" class="text-danger"></span>
+            <input type="hidden" asp-for="FileName" />
+        </div>
+        <div class="col-6">
+            <label asp-for="Category" class="form-label"></label>
+            <input type="text" asp-for="Category" class="form-control" />
+            <span asp-validation-for="Category"></span>
+        </div>
+        <div class="col-6">
+            <label asp-for="Name" class="form-label" ></label>
+            <input type="text" asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div class="col-6">
+            <label asp-for="Description" class="form-lable"></label>
+            <input type="text" asp-for="Description" class="form-control" />
+        </div>
+        <div class="col-6">
+            <label asp-for="Price" class="form-label"></label>
+            <input type="text" asp-for="Price" class="form-control" />
+        </div>
+        <div class="col-6">
+            <label asp-for="Quantity" class="form-label"></label>
+            <input type="text" asp-for="Quantity" class="form-control" />
+        </div>
+        <div class="col-6 mt-4">
+            <input  type="submit" class="form-control btn btn-primary" />
+            <a type="button" class="form-control btn" asp-action="index" asp-controller="item" >
+                Back
+                <i class=""></i>
+            </a>
+        </div>
+
+    </form>
+
+</div>
+@section Scripts
+{
+    <script>
+        function hiddenfiledchange()
+        {
+            console.log('files', this);
+            var fileinput = $('#UploadedFile');
+            $('#FileName').value = fileinput.value;
+        }
+    </script>
+}
