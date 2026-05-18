@@ -9,6 +9,7 @@ pipeline {
         PUBLISH_DIR = "publish"
         IIS_PATH = "C:\\inetpub\\wwwroot\\cartapp"   // change to your IIS site path
         IIS_SITE = "cartapp"                        // your IIS site name
+		MSBUILD='"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe"'
     }
 
     stages {
@@ -24,12 +25,16 @@ pipeline {
         stage('Restore') {
             steps {
                 bat 'dotnet restore'
+				bat '"D:\\program files\\nuget\\nuget.exe" restore %SOLUTION%'
             }
         }
 
         stage('Build') {
             steps {
                 bat 'dotnet build --configuration Release'
+				bat '''
+                %MSBUILD% %SOLUTION% /p:Configuration=Release
+                '''
             }
         }
 
