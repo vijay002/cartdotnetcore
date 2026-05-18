@@ -24,16 +24,16 @@ pipeline {
 
         stage('Restore') {
             steps {
-                bat 'dotnet restore'
+               
 				bat '"D:\\program files\\nuget\\nuget.exe" restore %SOLUTION%'
             }
         }
 
         stage('Build') {
             steps {
-                bat 'dotnet build --configuration Release'
+                
 				bat '''
-                %MSBUILD% %SOLUTION% /p:Configuration=Release
+                %MSBUILD% %SOLUTION% --configuration Release
                 '''
             }
         }
